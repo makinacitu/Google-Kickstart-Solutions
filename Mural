@@ -1,0 +1,51 @@
+import sys
+
+#################### Read from File ##################
+filename="C:/Users/Ahmet/Desktop/Python_library/Mural/input1.txt"
+
+#Read the lines from input file
+lines = open(filename).readlines()
+T=lines[0]
+N=[]
+for l in range(len(lines)-1):
+    N.append(int(lines[l+1]))
+############################
+A=[]
+B=[]
+R = [] #Results
+for i in range(len(N)):
+    if i % 2 == 0:
+        a=N[i]/2+0.5
+        A.append(a) #how many digits will be added
+    elif i % 2 == 1:
+        b=N[i]
+        B.append(b) #Numbers
+        #map(int,str(b))
+        #G=list(str(b))
+
+
+C=[] #Biggest digit 
+D=[] #Biggest digit value index
+E=[] #Results with irrelevant values
+F=[] #Results
+
+l=-1
+
+for k in range(len(B)):
+    c=max(str(B[k]))
+    C.append(c)
+    d=str(B[k]).index(C[k])
+    D.append(d)
+    e=0
+    for j in range(int(A[k])):
+        e=e+int(str(B[k])[int(D[k])+j])
+        E.append(e)
+    
+    l=l+int(A[k])
+    f= E[l]
+    F.append(f)
+    
+#Writing the results    
+for i in range(len(F)):
+    print('Case #'+'%.f' % int(i+1) + ': ' + '%.f' % F[i])
+del i
